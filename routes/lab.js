@@ -40,4 +40,16 @@ router.post('/login', function (req, res) {
   }, 500)
 })
 
+router.post('/uploadImage', function (req, res) {
+  const data = {
+    isSuccess: true,
+    msg: 'ok lah~'
+  }
+
+  // response
+  setTimeout(() => {
+    res.json(data)
+  }, 500)
+})
+
 module.exports = router
