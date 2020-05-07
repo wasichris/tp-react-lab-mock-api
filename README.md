@@ -1,7 +1,7 @@
-# Thinkpower - Mock API for React.js Lab #
+# Mock API for React.js Lab #
 提供可運作的 API 提供者環境，透過回應資料的變化來測試各邏輯互動是否正確。
 
-***
+
 ## 啟動 Mock Api 服務 ##
 
 ```
