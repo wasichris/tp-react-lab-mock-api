@@ -35,7 +35,12 @@ router.post('/login', function (req, res) {
   // res.status(500).json('Server Error')
 
   // 加入 cookie 做測試
-  res.cookie('refreshToken', 'ooxooxoxoxoxoxo', { expires: new Date(Date.now() + 900000), httpOnly: true })
+  res.cookie('refreshToken', 'ooxooxoxoxoxoxo', {
+    expires: new Date(Date.now() + 900000),
+    httpOnly: true,
+    sameSite: 'none',
+    secure: true
+  })
 
   // response
   setTimeout(() => {
