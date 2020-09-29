@@ -34,6 +34,9 @@ router.post('/login', function (req, res) {
   // 測試錯誤發生的情境
   // res.status(500).json('Server Error')
 
+  // 加入 cookie 做測試
+  res.cookie('refreshToken', 'ooxooxoxoxoxoxo', { expires: new Date(Date.now() + 900000), httpOnly: true })
+
   // response
   setTimeout(() => {
     res.json(data)
