@@ -37,6 +37,7 @@ router.post('/login', function (req, res) {
   // 加入 cookie 做測試
   res.cookie('refreshToken', 'ooxooxoxoxoxoxo', {
     expires: new Date(Date.now() + 900000),
+    domain: '.herokuapp.com',
     httpOnly: true,
     sameSite: 'none',
     secure: true
