@@ -37,7 +37,7 @@ router.post('/login', function (req, res) {
   // 加入 cookie 做測試
   res.cookie('refreshToken', 'ooxooxoxoxoxoxo', {
     expires: new Date(Date.now() + 900000),
-    domain: 'react-lab-mock-api.herokuapp.com',
+    domain: 'yo-react-lab.herokuapp.com',
     httpOnly: true,
     sameSite: 'none',
     secure: true
