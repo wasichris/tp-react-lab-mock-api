@@ -38,7 +38,7 @@ router.post('/login', function (req, res) {
   res.cookie('refreshToken', 'ooxooxoxoxoxoxo', {
     expires: new Date(Date.now() + 900000),
     httpOnly: true,
-    sameSite: 'none',
+    // sameSite: 'none',
     secure: true
   })
 
