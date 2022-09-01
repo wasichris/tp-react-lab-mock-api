@@ -3,6 +3,10 @@ const faker = require('faker')
 const express = require('express')
 const router = express.Router()
 
+router.get("/alive", (req, res) => {
+  res.send("Lab alive");
+});
+
 router.post('/getContacts', function (req, res) {
   const { contactId } = req.body
   const dataAmount = faker.helpers.randomize([2, 3, 4, 5])
