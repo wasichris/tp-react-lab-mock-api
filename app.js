@@ -36,15 +36,15 @@ app.use(bodyParser.json({ limit: 1024 * 1024 * 5, type: 'application/json' }))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(allowCrossDomain)
 
-// // set welcome route
+// set welcome route
 // const router = express.Router()
 // router.get('/', function (req, res) {
 //   res.send('Yo.. This is React.js Lab Mock API!')
 // })
 // app.use('/', router)
 
-// // set other route
-// app.use('/api/lab', lab)
+// set other route
+app.use('/api/lab', lab)
 
 // // 使用nodejs自带的http、https模块
 // const https = require('https')
