@@ -68,16 +68,17 @@ var SSLPORT = 4999
 if (process.env.PORT) {
   app.listen(process.env.PORT)
 } else {
-  httpServer.listen(PORT, function () {
-    // eslint-disable-next-line no-console
-    console.log('HTTP Server is running on: http://localhost:%s', PORT)
-  })
+  app.listen(5000)
+  // httpServer.listen(PORT, function () {
+  //   // eslint-disable-next-line no-console
+  //   console.log('HTTP Server is running on: http://localhost:%s', PORT)
+  // })
 
-  // 创建https服务器
-  httpsServer.listen(SSLPORT, function () {
-    // eslint-disable-next-line no-console
-    console.log('HTTPS Server is running on: https://localhost:%s', SSLPORT)
-  })
+  // // 创建https服务器
+  // httpsServer.listen(SSLPORT, function () {
+  //   // eslint-disable-next-line no-console
+  //   console.log('HTTPS Server is running on: https://localhost:%s', SSLPORT)
+  // })
 }
 
 // 可以根据请求判断是http还是https
