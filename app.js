@@ -32,7 +32,7 @@ app.use(
     }
   )
 )
-app.use(bodyParser.json({limit: 1024 * 1024 * 5, type: 'application/json'}))
+app.use(bodyParser.json({ limit: 1024 * 1024 * 5, type: 'application/json' }))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(allowCrossDomain)
 
@@ -54,7 +54,7 @@ const fs = require('fs')
 // 根據項目的路徑傳入生成的證書文件
 const privateKey = fs.readFileSync('./certificate/privateC.pem', 'utf8')
 const certificate = fs.readFileSync('./certificate/caC.cer', 'utf8')
-const credentials = {key: privateKey, cert: certificate}
+const credentials = { key: privateKey, cert: certificate }
 
 // 创建http与HTTPS服务器
 const httpServer = http.createServer(app)
@@ -88,3 +88,6 @@ app.get('/currentProtocol', function (req, res) {
     res.status(200).send('This is http visit!')
   }
 })
+
+// Export the Express API
+module.exports = app;
