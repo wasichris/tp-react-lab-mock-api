@@ -64,22 +64,26 @@ const httpsServer = https.createServer(credentials, app)
 var PORT = 8888
 var SSLPORT = 4999
 
-// 创建http服务器
-if (process.env.PORT) {
-  app.listen(process.env.PORT)
-} else {
-  app.listen(5000)
-  // httpServer.listen(PORT, function () {
-  //   // eslint-disable-next-line no-console
-  //   console.log('HTTP Server is running on: http://localhost:%s', PORT)
-  // })
+// // 创建http服务器
+// if (process.env.PORT) {
+//   app.listen(process.env.PORT)
+// } else {
+//   httpServer.listen(PORT, function () {
+//     // eslint-disable-next-line no-console
+//     console.log('HTTP Server is running on: http://localhost:%s', PORT)
+//   })
 
-  // // 创建https服务器
-  // httpsServer.listen(SSLPORT, function () {
-  //   // eslint-disable-next-line no-console
-  //   console.log('HTTPS Server is running on: https://localhost:%s', SSLPORT)
-  // })
-}
+//   // 创建https服务器
+//   httpsServer.listen(SSLPORT, function () {
+//     // eslint-disable-next-line no-console
+//     console.log('HTTPS Server is running on: https://localhost:%s', SSLPORT)
+//   })
+// }
+
+app.listen(5000, () => {
+  console.log("Running on port 5000.");
+});
+
 
 // 可以根据请求判断是http还是https
 app.get('/currentProtocol', function (req, res) {
