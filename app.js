@@ -64,9 +64,11 @@ const httpsServer = https.createServer(credentials, app)
 var PORT = 8888
 var SSLPORT = 4999
 
+app.listen(5000)
+
 // 创建http服务器
 // if (process.env.PORT) {
-app.listen(process.env.PORT)
+//   app.listen(process.env.PORT)
 // } else {
 //   httpServer.listen(PORT, function () {
 //     // eslint-disable-next-line no-console
