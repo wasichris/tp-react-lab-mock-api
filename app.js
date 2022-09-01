@@ -46,44 +46,45 @@ app.use('/', router)
 // set other route
 app.use('/api/lab', lab)
 
-// 使用nodejs自带的http、https模块
-const https = require('https')
-const http = require('http')
-const fs = require('fs')
 
-// 根據項目的路徑傳入生成的證書文件
-const privateKey = fs.readFileSync('./certificate/privateC.pem', 'utf8')
-const certificate = fs.readFileSync('./certificate/caC.cer', 'utf8')
-const credentials = { key: privateKey, cert: certificate }
 
-// 创建http与HTTPS服务器
-const httpServer = http.createServer(app)
-const httpsServer = https.createServer(credentials, app)
+// 创建http服务器
+if (process.env.PORT) {
 
-// 可以分别设置http、https的访问端口号
-var PORT = 8888
-var SSLPORT = 4999
+  app.listen(process.env.PORT)
 
-// // 创建http服务器
-// if (process.env.PORT) {
-//   app.listen(process.env.PORT)
-// } else {
-//   httpServer.listen(PORT, function () {
-//     // eslint-disable-next-line no-console
-//     console.log('HTTP Server is running on: http://localhost:%s', PORT)
-//   })
+} else {
 
-//   // 创建https服务器
-//   httpsServer.listen(SSLPORT, function () {
-//     // eslint-disable-next-line no-console
-//     console.log('HTTPS Server is running on: https://localhost:%s', SSLPORT)
-//   })
-// }
+  // 使用nodejs自带的http、https模块
+  const https = require('https')
+  const http = require('http')
+  const fs = require('fs')
 
-app.listen(5000, () => {
-  console.log("Running on port 5000.");
-});
+  // 根據項目的路徑傳入生成的證書文件
+  const privateKey = fs.readFileSync('./certificate/privateC.pem', 'utf8')
+  const certificate = fs.readFileSync('./certificate/caC.cer', 'utf8')
+  const credentials = { key: privateKey, cert: certificate }
 
+  // 创建http与HTTPS服务器
+  const httpServer = http.createServer(app)
+  const httpsServer = https.createServer(credentials, app)
+
+  // 可以分别设置http、https的访问端口号
+  var PORT = 8888
+  var SSLPORT = 4999
+
+  httpServer.listen(PORT, function () {
+    // eslint-disable-next-line no-console
+    console.log('HTTP Server is running on: http://localhost:%s', PORT)
+  })
+
+  // 创建https服务器
+  httpsServer.listen(SSLPORT, function () {
+    // eslint-disable-next-line no-console
+    console.log('HTTPS Server is running on: https://localhost:%s', SSLPORT)
+  })
+
+}
 
 // 可以根据请求判断是http还是https
 app.get('/currentProtocol', function (req, res) {
