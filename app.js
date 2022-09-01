@@ -51,6 +51,7 @@ app.use('/api/lab', lab)
 // 创建http服务器
 if (process.env.PORT) {
 
+  // 在 vercel 加入環境變數 PORT 5000 即可
   app.listen(process.env.PORT)
 
 } else {
