@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 
 // import routes
 const lab = require('./routes/lab')
+const charge = require('./routes/charge')
 process.title = 'mockapi'
 
 // CORS All Request
@@ -45,7 +46,7 @@ app.use('/', router)
 
 // set other route
 app.use('/api/lab', lab)
-
+app.use('/api/charge', charge)
 
 
 // 创建http服务器
