@@ -43,8 +43,8 @@ router.post('/charging_map', function (req, res) {
         city: "縣市",
         state: "市區",
         coordinates: {
-          latitude: '緯度',
-          longitude: '經度',
+          latitude: latitude,
+          longitude: longitude + '_' + radius,
         },
         ac_info: {
           all: 10,
