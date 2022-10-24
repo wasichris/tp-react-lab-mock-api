@@ -15,9 +15,9 @@ const responseData = {
 }
 
 router.post('/getAuthToken', function (req, res) {
-
   const data = {
-    ...responseData, data: {
+    ...responseData,
+    data: {
       token: (new Date()).toDateString()
       // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDRlOGQ5YTA2MWMxYTJjMDIxY2JlMTgiLC JpYXQiOjE1NjU4NTczMjAsImV4cCI6MTU2NTk0MzcyMH0.GQVyQJLmwXd2jQZsjZ8n6cAWD0HQGj vlp2Mk8kAsGy8'
     }
@@ -45,7 +45,7 @@ router.post('/charging_map', function (req, res) {
         state: '市區',
         coordinates: {
           latitude: latitude,
-          longitude: longitude + '_' + radius,
+          longitude: longitude + '_' + radius
         },
         ac_info: {
           all: 10,
@@ -85,7 +85,7 @@ router.post('/charging_map', function (req, res) {
                 voltage: '電壓',
                 amperage: '安培數',
                 format: '規格',
-                charge_status: 'AVAILABLE',
+                charge_status: 'AVAILABLE'
               }
             ],
             charging_type: 1
@@ -102,9 +102,7 @@ router.post('/charging_map', function (req, res) {
   res.json(data)
 })
 
-
 router.get('/start_changing', function (req, res) {
-
   const { location_id, evse_id, create_date } = req.query
 
   const data = {
@@ -122,6 +120,5 @@ router.get('/start_changing', function (req, res) {
   // response
   res.json(data)
 })
-
 
 module.exports = router
