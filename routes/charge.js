@@ -1,11 +1,12 @@
+/* eslint-disable camelcase */
 const mockHelper = require('../utils/mockHelper')
 const faker = require('faker')
 const express = require('express')
 const router = express.Router()
 
-router.get("/alive", (req, res) => {
-  res.send("charge api alive");
-});
+router.get('/alive', (req, res) => {
+  res.send('charge api alive')
+})
 
 const responseData = {
   status: '00000',
@@ -38,10 +39,10 @@ router.post('/charging_map', function (req, res) {
           id: '開放類型編號',
           name: '開放類型名稱'
         },
-        name: "充電站名稱",
-        address: "充電站地址",
-        city: "縣市",
-        state: "市區",
+        name: '充電站名稱',
+        address: '充電站地址',
+        city: '縣市',
+        state: '市區',
         coordinates: {
           latitude: latitude,
           longitude: longitude + '_' + radius,
@@ -70,21 +71,21 @@ router.post('/charging_map', function (req, res) {
         images: ['m1', 'm2'],
         evses: [
           {
-            evse_id: "充電樁編號",
-            vendor: "Lexus/Toyota",
-            floor_level: "樓層",
-            availability: "充電樁狀態 AVAILABLE :可使用 UNAVAILABLE:不可使",
-            images: "充電樁相關照片 url",
+            evse_id: '充電樁編號',
+            vendor: 'Lexus/Toyota',
+            floor_level: '樓層',
+            availability: '充電樁狀態 AVAILABLE :可使用 UNAVAILABLE:不可使',
+            images: '充電樁相關照片 url',
             connectors: [
               {
-                connector_id: "充電槍編號",
-                standard: "標準",
-                power_type: "供電類型",
-                max_electric_power: "最大輸出電",
-                voltage: "電壓",
-                amperage: "安培數",
-                format: "規格",
-                charge_status: "AVAILABLE",
+                connector_id: '充電槍編號',
+                standard: '標準',
+                power_type: '供電類型',
+                max_electric_power: '最大輸出電',
+                voltage: '電壓',
+                amperage: '安培數',
+                format: '規格',
+                charge_status: 'AVAILABLE',
               }
             ],
             charging_type: 1
@@ -102,18 +103,20 @@ router.post('/charging_map', function (req, res) {
 })
 
 
-router.post('/getContacts', function (req, res) {
-  const { contactId } = req.body
-  const dataAmount = faker.helpers.randomize([2, 3, 4, 5])
+router.get('/start_changing', function (req, res) {
+
+  const { location_id, evse_id, create_date } = req.query
+
   const data = {
-    id: contactId,
-    contacts: mockHelper.genDatas(dataAmount, () => {
-      return {
-        name: faker.name.lastName(),
-        phone: faker.phone.phoneNumber(),
-        isMarried: mockHelper.getRandomItem([true, false])
-      }
-    })
+    location_id: '充電站編號-' + location_id,
+    location_name: '充電站名稱',
+    rate: 22,
+    evse_id: '充電樁編號-' + evse_id,
+    power_type: '供電類型',
+    standard: '標準',
+    max_electric_power: 22,
+    voltage: 22,
+    charge_status: '充電樁狀態-' + create_date
   }
 
   // response
