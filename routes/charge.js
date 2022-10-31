@@ -36,66 +36,48 @@ router.post('/chargingmap', function (req, res) {
     ...responseData,
     data: mockHelper.genDatas(dataAmount, () => {
       return {
-        id: '充電站編號',
-        open_type: {
-          id: '開放類型編號',
-          name: '開放類型名稱'
-        },
-        name: '充電站名稱',
-        address: '充電站地址',
-        city: '縣市',
-        state: '市區',
-        coordinates: {
-          latitude: latitude,
-          longitude: longitude + '_' + radius
-        },
-        ac_info: {
-          all: 10,
-          available: 7,
-          unavailable: 3
-        },
-        dc_info: {
-          all: 5,
-          available: 4,
-          unavailable: 1
-        },
-        opening: {
-          status: 1,
-          start_time: '08:00:00',
-          end_time: '23:00:00'
-        },
-        parking_fee: '150 元/次',
-        parking_space: '平面 55-65 停車位',
-        msp: '合作營運商',
-        contact_number: '連絡電話',
-        rate: '費率',
-        rate_note: '費率額外備註',
-        images: ['m1', 'm2'],
-        evses: [
-          {
-            evse_id: '充電樁編號',
-            vendor: 'Lexus/Toyota',
-            floor_level: '樓層',
-            availability: '充電樁狀態 AVAILABLE :可使用 UNAVAILABLE:不可使',
-            images: '充電樁相關照片 url',
-            connectors: [
-              {
-                connector_id: '充電槍編號',
-                standard: '標準',
-                power_type: '供電類型',
-                max_electric_power: '最大輸出電',
-                voltage: '電壓',
-                amperage: '安培數',
-                format: '規格',
-                charge_status: 'AVAILABLE'
-              }
-            ],
-            charging_type: 1
-          }
-        ],
-        additional_remarks: '補充說明',
-        idle_fee: '50 元 / 10 分鐘'
-
+        ocationId: '充電場域編號-' + radius,
+        name: '充電場域名稱',
+        city: '充電場域縣市',
+        state: '充電場域行政區',
+        addr: '充電場域地址',
+        directions: '前往充電場域指引說明',
+        lat: '充電場域緯度-' + latitude,
+        lon: '充電場域經度-' + longitude,
+        operator: '充電場域營運商',
+        phone: '充電場域聯絡電話',
+        openningStatus: 1,
+        images: ['url-a', 'url-b'],
+        remark: '其他備註說明',
+        parkingType: '充電場域類型',
+        fee: [{
+          name: '費率',
+          unit: '費率單位',
+          remark: '費率說明'
+        }],
+        openingTimes: [{
+          weekday: '充電場域正常營業時間-星期',
+          opening_begin: '充電場域正常營業時間-開始時間 ',
+          opening_end: '充電場域正常營業時間-結束時間'
+        }],
+        evse: [{
+          evseId: '充電樁編號',
+          evseStatus: 0,
+          floorLevel: '充電樁所在樓層',
+          parkingInfo: '停車格訊息',
+          remark: '其他備註說明',
+          connectors: [{
+            connectorId: '充電槍編號',
+            connectorStatus: 0,
+            connectorFormat: 1,
+            connectorType: '充電槍類型',
+            powerType: 1,
+            maxVoltage: '充電槍最大電壓(V)',
+            maxAmperage: '充電槍最大電流(A)',
+            maxPower: '充電槍最大功率(kw)',
+            stopChargingType: 1
+          }]
+        }]
       }
     })
   }
