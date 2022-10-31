@@ -14,11 +14,13 @@ const responseData = {
   data: {}
 }
 
-router.post('/getAuthToken', function (req, res) {
+router.get('/authorization', function (req, res) {
+  const { appId, appKey, memberToken } = req.query
+
   const data = {
     ...responseData,
     data: {
-      token: (new Date()).toDateString()
+      accessToken: `${(new Date()).toDateString()} - ${appId}:${appKey} - ${memberToken}`
       // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDRlOGQ5YTA2MWMxYTJjMDIxY2JlMTgiLC JpYXQiOjE1NjU4NTczMjAsImV4cCI6MTU2NTk0MzcyMH0.GQVyQJLmwXd2jQZsjZ8n6cAWD0HQGj vlp2Mk8kAsGy8'
     }
   }
