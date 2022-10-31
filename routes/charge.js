@@ -36,7 +36,7 @@ router.post('/chargingmap', function (req, res) {
     ...responseData,
     data: mockHelper.genDatas(dataAmount, () => {
       return {
-        ocationId: '充電場域編號-' + radius,
+        locationId: '充電場域編號-' + radius,
         name: '充電場域名稱',
         city: '充電場域縣市',
         state: '充電場域行政區',
