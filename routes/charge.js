@@ -29,7 +29,7 @@ router.get('/authorization', function (req, res) {
   res.json(data)
 })
 
-router.post('/charging_map', function (req, res) {
+router.post('/chargingmap', function (req, res) {
   const { longitude, latitude, radius } = req.body
   const dataAmount = faker.helpers.randomize([2, 3, 4, 5])
   const data = {
