@@ -3,9 +3,9 @@ const faker = require('faker')
 const express = require('express')
 const router = express.Router()
 
-router.get("/alive", (req, res) => {
-  res.send("Lab alive");
-});
+router.get('/alive', (req, res) => {
+  res.send('Lab alive')
+})
 
 router.post('/getContacts', function (req, res) {
   const { contactId } = req.body
@@ -25,6 +25,13 @@ router.post('/getContacts', function (req, res) {
   setTimeout(() => {
     res.json(data)
   }, 1000)
+})
+
+router.post('/redirect-sample', function (req, res) {
+  // response
+  setTimeout(() => {
+    res.status(302).redirect('http://localhost:3000/landing')
+  }, 200)
 })
 
 router.post('/login', function (req, res) {

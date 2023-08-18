@@ -48,15 +48,11 @@ app.use('/', router)
 app.use('/api/lab', lab)
 app.use('/api/charge', charge)
 
-
 // 创建http服务器
 if (process.env.PORT) {
-
   // 在 vercel 加入環境變數 PORT 5000 即可
   app.listen(process.env.PORT)
-
 } else {
-
   // 使用nodejs自带的http、https模块
   const https = require('https')
   const http = require('http')
@@ -85,7 +81,6 @@ if (process.env.PORT) {
     // eslint-disable-next-line no-console
     console.log('HTTPS Server is running on: https://localhost:%s', SSLPORT)
   })
-
 }
 
 // 可以根据请求判断是http还是https
@@ -97,6 +92,5 @@ app.get('/currentProtocol', function (req, res) {
   }
 })
 
-
 // Export the Express API
-module.exports = app;
+module.exports = app
