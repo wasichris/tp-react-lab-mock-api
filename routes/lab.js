@@ -34,6 +34,13 @@ router.post('/redirect-sample', function (req, res) {
   }, 200)
 })
 
+router.post('/my-data-redirect-sample', function (req, res) {
+  // response
+  setTimeout(() => {
+    res.status(302).redirect('http://localhost:4200/dev/my-data')
+  }, 200)
+})
+
 router.post('/login', function (req, res) {
   const { id, pcode } = req.body
   const isSuccessLogin = pcode === '111'
