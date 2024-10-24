@@ -40,7 +40,7 @@ app.use(allowCrossDomain)
 // set welcome route
 const router = express.Router()
 router.get('/', function (req, res) {
-  res.send('Yo.. This is React.js Lab Mock API!')
+  res.send(`Yo.. This is React.js Lab Mock API! ${new Date().toISOString()}`)
 })
 app.use('/', router)
 
